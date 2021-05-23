@@ -1,9 +1,10 @@
 //express モジュールのインスタンス生成
-const express = require('express')
-const app = express()
-const port = 8080
-app.use(express.json())
+const express = require('express');
+const app = express();
+const port = 8080;
+app.use(express.json());
 
+//課題２
 app.use("/", (req, res, next) => {
   const cType = req.headers["content-type"];
   console.log(cType.indexOf("application/json"));
@@ -11,10 +12,12 @@ app.use("/", (req, res, next) => {
   next();
 });
 
+//課題１
 app.get('/', (req, res) => {
-  res.send({text: 'hello world'})//課題１
-})
+  res.send({text: 'hello world'})
+});
 
+//課題１
 app.post("/", (req, res) => {
   console.log(req.header); 
   const cType = req.headers["content-type"];
@@ -26,4 +29,4 @@ app.post("/", (req, res) => {
 //ポート8080で待ち受ける
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
-})
+});
